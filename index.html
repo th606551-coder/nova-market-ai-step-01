@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#030d20"><title>NOVA MARKET AI — Smart Market Scanner</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div class="terminal" id="terminal">
+  <header class="topbar"><button class="iconbtn menu" aria-label="Menu">☰</button><div class="brandmark">◈</div><div class="brand">QUOTEX <span>│ WEB TRADING PLATFORM</span></div><div class="top-spacer"></div><div class="demo-pill">▰ <b>DEMO</b>⌄</div><div class="balance">◉ ৳201.00</div><div class="deposit">＋ Deposit</div><div class="top-icon">♟</div></header>
+  <aside class="sidebar"><button class="side-active">⌁</button><button>◈</button><button>♟</button><button>♜</button><button>?</button><div class="side-gap"></div><button>♧</button><button>5m</button><button>⌁</button><button>✎</button><button>◉</button><div class="side-bottom">OFFICIAL</div><button class="help">✿<small>Help</small></button></aside>
+  <main class="chart-area">
+    <div class="chart-toolbar"><div class="asset-pill"><span class="flag">🇺🇸</span><div><b id="chartAsset">EUR/USD</b><small>82%</small></div><span class="chevron">⌄</span></div><button class="plus">＋</button></div>
+    <div class="chart-meta"><span class="green-dot">✚</span><span id="clock">16:32:48 UTC+6</span><span class="info">ⓘ</span></div><div class="pair-info">⊕ &nbsp;PAIR INFORMATION</div>
+    <div class="chart-grid" id="chartGrid"><div class="price-line"></div><div class="trade-line"><span>Beginning of trade</span></div><div class="price-labels"><span>1.12400</span><span>1.12350</span><span>1.12300</span><span class="current-price" id="priceNow">1.12278</span><span>1.12200</span><span>1.12150</span><span>1.12100</span></div><svg id="candles" class="candles" viewBox="0 0 900 490" preserveAspectRatio="none" aria-label="Illustrative demo candlestick chart"></svg>
+      <div class="radar" id="radar" aria-hidden="true"><div class="radar-ring r1"></div><div class="radar-ring r2"></div><div class="radar-ring r3"></div><div class="radar-cross"></div><div class="radar-core"></div><div class="sweep"></div><div class="scan-beam"></div><div class="radar-status"><b id="scanLabel">READY TO SCAN</b><div class="progress"><i id="progressFill"></i></div></div></div>
+    </div>
+    <div class="rsi-panel"><div class="rsi-label">◈ &nbsp; RSI <span>14</span> <b>↗</b></div><span class="rsi-70">70</span><span class="rsi-30">30</span><svg id="rsiLine" viewBox="0 0 900 90" preserveAspectRatio="none"></svg></div>
+    <div class="time-labels"><span>16:00</span><span>16:05</span><span>16:10</span><span>16:15</span><span>16:20</span><span>16:25</span><span>16:30</span><span>16:35</span><span>16:40</span><span>16:45</span></div>
+  </main>
+  <section class="feature-strip"><div><b>◎</b><span>Live Analysis<small>Real-time scan*</small></span></div><i></i><div><b>◉</b><span>Smart Algorithm<small>EMA + RSI + Trend</small></span></div><i></i><div><b>↗</b><span>UP / DOWN / WAIT<small>Clear signal</small></span></div><i></i><div><b>⛶</b><span>Drag & Minimize<small>Anywhere on screen</small></span></div></section>
+</div>
+<button id="robot" class="robot" aria-label="Open NOVA MARKET AI"><span class="robot-orbit"></span><span class="robot-head"><i></i><i></i><b>N</b></span><span class="robot-glow"></span></button>
+<div class="robot-close-wrap"><button id="hideRobot" class="tiny-close" aria-label="Hide robot">×</button></div>
+<button id="miniBar" class="mini-bar"><span class="mini-bot"><i></i><i></i></span><span><b>NOVA</b><small>Tap to open</small></span><strong>⌃</strong></button>
+<section id="panel" class="panel" aria-label="NOVA Market AI panel">
+  <div class="panel-header" id="panelDrag"><div class="nova-logo">N</div><div class="panel-title"><b>NOVA MARKET AI</b><small>Smart Market Scanner</small></div><button id="closePanel" class="panel-close" aria-label="Close panel">×</button></div>
+  <nav class="tabs"><button class="tab selected" data-tab="scan">Scan</button><button class="tab" data-tab="history">History</button><button class="tab" data-tab="settings">Settings</button></nav>
+  <div id="scanView" class="view"><label>▪ Market</label><select id="market"><option>EUR/USD</option><option>GBP/USD</option><option>USD/JPY</option><option>AUD/USD</option><option>EUR/GBP</option><option>BTC/USD</option><option>ETH/USD</option></select><label>▪ Timeframe</label><select id="timeframe"><option value="1m">◷ &nbsp;1 minute</option><option value="5m">◷ &nbsp;5 minutes</option><option value="15m">◷ &nbsp;15 minutes</option><option value="30m">◷ &nbsp;30 minutes</option><option value="1h">◷ &nbsp;1 hour</option></select>
+    <button id="startScan" class="start-button"><span>ϟ</span> START SCAN</button>
+    <label>▪ Scan Mode</label><div class="mode-switch"><button class="mode selected" data-mode="manual">⊖ &nbsp;Manual</button><button class="mode" data-mode="repeat">⟳ &nbsp;Auto Repeat</button></div>
+    <div class="status-card"><div class="status-ring"><i></i></div><div><b id="statusTitle">Ready to scan</b><small id="statusText">Click START SCAN to begin analysis</small></div></div>
+    <div id="resultCard" class="result-card hidden"><div class="result-heading"><b id="signalResult">WAIT</b><span id="signalTime">—</span></div><p id="signalReason">Demo chart only. Connect a verified candle feed to analyze live markets.</p><div class="result-metrics"><span>RSI <b id="rsiValue">—</b></span><span>EMA trend <b id="trendValue">—</b></span></div></div>
+    <div class="panel-footer"><span class="online-dot"></span><b>NOVA AI</b><span>• Trade Smarter</span><strong>▥</strong></div>
+  </div>
+  <div id="historyView" class="view hidden"><div class="view-heading">Scan History <button id="clearHistory">Clear</button></div><div id="historyList" class="history-list"><p class="empty-state">Your scan results will appear here.</p></div></div>
+  <div id="settingsView" class="view hidden"><div class="view-heading">Scanner Settings</div><label>Confidence threshold <b id="confidenceLabel">70%</b></label><input id="confidence" type="range" min="50" max="95" value="70"><label class="setting-toggle"><span>Blur chart while scanning</span><input id="blurSetting" type="checkbox" checked></label><label class="setting-toggle"><span>Show scan beam</span><input id="beamSetting" type="checkbox" checked></label><label class="setting-toggle"><span>Repeat every 30 seconds</span><input id="repeatSetting" type="checkbox"></label><p class="settings-note">Auto Repeat rechecks only the currently available demo/sample data until a verified live data source is connected.</p></div>
+  <div class="panel-note">Analysis only · Auto-trading OFF · <span id="feedState">No verified candle feed connected</span></div>
+</section>
+<div id="toast" class="toast" role="status"></div>
+<script src="./scanner-engine.js"></script><script src="./app.js"></script>
+</body></html>
